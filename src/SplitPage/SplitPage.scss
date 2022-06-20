@@ -1,0 +1,73 @@
+h1 {
+  font-size: 4rem;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.split_left {
+  position: absolute;
+  height: 100%;
+  overflow: hidden;
+  left: 0;
+  background: url('../assets/mountain.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.split_left::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--left-bg-color);
+}
+
+.split_right {
+  position: absolute;
+  height: 100%;
+  overflow: hidden;  right: 0;
+  background: url('../assets/sea.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.split_right::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--right-bg-color);
+}
+
+.split_right, .split_left, .split_left::before, .split_right::before {
+  transition: all var(--speed) ease-in-out;
+}
+
+.hover-left{
+   .split_left {
+    width: var(--hover-width);
+  }
+}
+
+.hover-left .split_right {
+  width: var(--other-width);
+}
+
+.hover-right .split_right {
+  width: var(--hover-width);
+}
+
+.hover-right .split_left {
+  width: var(--other-width);
+}
+
+@media(max-width: 800px) {
+  h1 {
+    font-size: 2rem;
+    top: 30%
+  }
+}
